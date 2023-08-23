@@ -1,8 +1,8 @@
 
 /**
  * Beschreiben Sie hier die Klasse Waffe.
- * 
- * @author (KEH) 
+ *
+ * @author (KEH)
  * @version (17.08.2023)
  */
 public class Schwert extends Waffe
@@ -15,7 +15,6 @@ public class Schwert extends Waffe
     {
         super();
         Wuerfel w = new Wuerfel(30);
-        w.werfen();
         schadensbonus = 15+w.gibAugenzahl();
     }
 

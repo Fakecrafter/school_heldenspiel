@@ -1,17 +1,16 @@
+// Held ist eine Spielfigur
 public class Held extends Spielfigur
 {
-    // Attribute
     private String name;
 
-    // Bezugsobjekte
+    // jeder Held besitzt eine Waffe die getauscht werden kann
     private Waffe meineWaffe;
 
     public Held(String pName)
     {
         super();
         name = pName;
-        meinWuerfel.werfen();
-        if(meinWuerfel.gibAugenzahl() % 2 == 0)
+        if(meinWuerfel.werfen() % 2 == 0)
         {
             meineWaffe = new Axt();
         }
@@ -21,15 +20,15 @@ public class Held extends Spielfigur
         }
     }
 
+    // Angriffswert bestehend aus eigener Staerke und Waffenschaden
     public double getAngriffswert()
     {
         return staerke + meineWaffe.getSchadensbonus();
     }
 
+    // Waffe austauschen
     public void waffeAufheben(Waffe pWaffe)
     {
         meineWaffe = pWaffe;
     }
-
-
 }
