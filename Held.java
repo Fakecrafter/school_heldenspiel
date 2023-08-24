@@ -19,7 +19,9 @@ public class Held extends Spielfigur
             meineWaffe = new Schwert();
         }
     }
-
+    public String getName() {
+	return name;
+    }
     // Angriffswert bestehend aus eigener Staerke und Waffenschaden
     public double getAngriffswert()
     {

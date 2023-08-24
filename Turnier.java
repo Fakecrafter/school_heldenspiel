@@ -5,16 +5,14 @@ public class Turnier {
     // Konstruktor
     public Turnier() {
         Held[] helden = new Held[10];
-        for(int i=0;i <= 10; i++) {
-	    // Helden initialisieren und Namen vergeben
+        for(int i=0;i < 10; i++) {
+            // Helden initialisieren und Namen vergeben
             helden[i] = new Held("Superheld" + Integer.toString(i));
+	    System.out.println(helden[i].getName());
         }
     }
-    public static void main(String[] args) {
-	// Input/Output fuer Spielmechanik (TODO)
-    }
     public void fight(Held held) {
-	// ueberpruefen wer mehr Angriffsschaden verursacht
+        // ueberpruefen wer mehr Angriffsschaden verursacht
         if(monster.getAngriffswert() > held.getAngriffswert()) {
             held.zieheLebenspunktAb();
         }
@@ -71,9 +69,25 @@ public class Turnier {
                 return helden[i];
             }
         }
-	// falls kein Held die LebensGrenze uebertritt gebe null zurueck
-	return null;
+        // falls kein Held die LebensGrenze uebertritt gebe null zurueck
+        return null;
     }
-    // noch nicht implementiert
-    public void sortiereHelden() {}
+    public void sortiereHelden() {
+        for(int i = 0; i < helden.length - 1; i++) {
+            int weakestHeroIndex = i;
+            for(int j = i + 1; j < helden.length; j++) {
+		// suche schwaechsten Helden
+                if(helden[weakestHeroIndex].getAngriffswert() > helden[j].getAngriffswert()) {
+                    weakestHeroIndex = j;
+                }
+            }
+            // wenn erstes element gleichzeitig schwaechstes ist, kein Grund zu tauschen
+            if(weakestHeroIndex != i) {
+		// ersten Helden mit schwaechstem Helden tauschen
+		Held temp = helden[i];
+                helden[i] = helden[weakestHeroIndex];
+                helden[weakestHeroIndex] = temp;
+            }
+        }
+    }
 }
