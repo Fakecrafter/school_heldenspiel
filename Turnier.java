@@ -72,19 +72,34 @@ public class Turnier {
         // falls kein Held die LebensGrenze uebertritt gebe null zurueck
         return null;
     }
+	// Todo
+    public void sortiereHeldenBubble() {
+		for(int i = 0; i < helden.length; i++) {
+			int extraAlreadySortedNums = 0;
+	    	for(int j = 0; j < helden.length - (1 + alreadySorted); j++) {
+	    		if(helden[j].getAngriffswert() > helden[j+1].getAngriffswert()) {
+					Held temp = helden[j];
+                	helden[j] = helden[j+1];
+                	helden[j+1] = temp;
+				} else {
+					extraAlreadySortedNums++;
+				}
+			}
+		}
+    }
     public void sortiereHelden() {
         for(int i = 0; i < helden.length - 1; i++) {
             int weakestHeroIndex = i;
             for(int j = i + 1; j < helden.length; j++) {
-		// suche schwaechsten Helden
+				// suche schwaechsten Helden
                 if(helden[weakestHeroIndex].getAngriffswert() > helden[j].getAngriffswert()) {
                     weakestHeroIndex = j;
                 }
             }
             // wenn erstes element gleichzeitig schwaechstes ist, kein Grund zu tauschen
             if(weakestHeroIndex != i) {
-		// ersten Helden mit schwaechstem Helden tauschen
-		Held temp = helden[i];
+				// ersten Helden mit schwaechstem Helden tauschen
+				Held temp = helden[i];
                 helden[i] = helden[weakestHeroIndex];
                 helden[weakestHeroIndex] = temp;
             }
